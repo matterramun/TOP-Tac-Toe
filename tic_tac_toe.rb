@@ -32,8 +32,10 @@ class Game
   end
 
   # TODO: victory checker... look for victory condition
+  def victory
+    puts currentplayer.to_s if 1.zero?
+  end
 
-  # TODO: placemarker method
   def placemarker
     currentplayer = @turn == 1 ? @name1 : @name2
     currentmarker = @turn == 1 ? @@marker1 : @@marker2
@@ -55,7 +57,17 @@ class Game
     end
     column -= 1
 
-    @board[row][column] = currentmarker
+    puts @board[row][column]
+    puts @@marker1
+    puts @@marker2
+
+    if @board[row][column] != '_'
+      puts 'Space is taken, try again!'
+      placemarker
+    else
+      @board[row][column] = currentmarker
+    end
+
 
   end
 
