@@ -13,7 +13,7 @@ class Game
   end
 
   def showboard
-    @board.each_with_index do |_a, row_index|
+    @board.each_with_index do |_row, row_index|
       @board[row_index].each_with_index do |mark, col_index|
         print mark
         print '|' if col_index < 2
@@ -45,6 +45,7 @@ class Game
       puts "Try again #{currentplayer}, pick a number between 1 and 3"
       row = gets.chomp.to_i
     end
+    row -= 1
 
     puts "#{currentplayer} which column?"
     column = gets.chomp.to_i
@@ -52,6 +53,10 @@ class Game
       puts "Try again #{currentplayer}, pick a number between 1 and 3"
       column = gets.chomp.to_i
     end
+    column -= 1
+
+    @board[row][column] = currentmarker
+
   end
 
   def play
