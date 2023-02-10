@@ -33,7 +33,16 @@ class Game
 
   # TODO: victory checker... look for victory condition
   def victory
-    puts currentplayer.to_s if 1.zero?
+    p1victory = %w[X X X]
+    p2victory = %w[O O O]
+
+    if @board[0] == p1victory || @board[3] == p1victory || @board[2] == p1victory
+      puts "#{@name1} Wins!"
+      exit
+    elsif @board[0] == p2victory || @board[3] == p2victory || @board[2] == p2victory
+      puts "#{@name2} Wins!"
+      exit
+    end
   end
 
   def placemarker
@@ -57,10 +66,6 @@ class Game
     end
     column -= 1
 
-    puts @board[row][column]
-    puts @@marker1
-    puts @@marker2
-
     if @board[row][column] != '_'
       puts 'Space is taken, try again!'
       placemarker
@@ -68,7 +73,7 @@ class Game
       @board[row][column] = currentmarker
     end
 
-
+    victory
   end
 
   def play
