@@ -36,10 +36,10 @@ class Game
     p1victory = %w[X X X]
     p2victory = %w[O O O]
 
-    if @board[0] == p1victory || @board[3] == p1victory || @board[2] == p1victory
+    if @board[0] == p1victory || @board[1] == p1victory || @board[2] == p1victory
       puts "#{@name1} Wins!"
       exit
-    elsif @board[0] == p2victory || @board[3] == p2victory || @board[2] == p2victory
+    elsif @board[0] == p2victory || @board[1] == p2victory || @board[2] == p2victory
       puts "#{@name2} Wins!"
       exit
     end
@@ -74,6 +74,7 @@ class Game
     end
 
     victory
+    system "clear"
   end
 
   def play
