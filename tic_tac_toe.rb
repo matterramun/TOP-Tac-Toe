@@ -99,7 +99,7 @@ class Game
     end
 
     victory
-    # system "clear"
+    system "clear"
   end
 
   def play
