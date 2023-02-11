@@ -36,11 +36,29 @@ class Game
     p1victory = %w[X X X]
     p2victory = %w[O O O]
 
-    if @board[0] == p1victory || @board[1] == p1victory || @board[2] == p1victory
+    col1victory = @board.each.map { |x| x[0] }
+    col2victory = @board.each.map { |x| x[1] }
+    col3victory = @board.each.map { |x| x[2] }
+
+    if (@board[0] == p1victory ||
+        @board[1] == p1victory ||
+        @board[2] == p1victory ||
+        col1victory == p1victory ||
+        col2victory == p1victory ||
+        col3victory == p1victory)
+      system "clear"
       puts "#{@name1} Wins!"
+      showboard
       exit
-    elsif @board[0] == p2victory || @board[1] == p2victory || @board[2] == p2victory
+    elsif (@board[0] == p2victory ||
+           @board[1] == p2victory ||
+           @board[2] == p2victory ||
+           col1victory == p2victory ||
+           col2victory == p2victory ||
+           col3victory == p2victory)
+      system "clear"
       puts "#{@name2} Wins!"
+      showboard
       exit
     end
   end
