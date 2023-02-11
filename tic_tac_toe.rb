@@ -40,12 +40,17 @@ class Game
     col2victory = @board.each.map { |x| x[1] }
     col3victory = @board.each.map { |x| x[2] }
 
+    diag_leftright_victory = @board.each.map.with_index { |x, i| x[i] }
+    diag_rightleft_victory = @board.each.map.with_index { |x, i| x[2-i] }
+
     if (@board[0] == p1victory ||
         @board[1] == p1victory ||
         @board[2] == p1victory ||
         col1victory == p1victory ||
         col2victory == p1victory ||
-        col3victory == p1victory)
+        col3victory == p1victory ||
+        diag_leftright_victory == p1victory ||
+        diag_rightleft_victory == p1victory)
       system "clear"
       puts "#{@name1} Wins!"
       showboard
@@ -55,7 +60,9 @@ class Game
            @board[2] == p2victory ||
            col1victory == p2victory ||
            col2victory == p2victory ||
-           col3victory == p2victory)
+           col3victory == p2victory ||
+           diag_leftright_victory == p2victory ||
+           diag_rightleft_victory == p2victory)
       system "clear"
       puts "#{@name2} Wins!"
       showboard
@@ -92,7 +99,7 @@ class Game
     end
 
     victory
-    system "clear"
+    # system "clear"
   end
 
   def play
